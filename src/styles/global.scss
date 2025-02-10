@@ -1,0 +1,28 @@
+@import "./_variables";
+@import "./_mixins";
+
+*{
+    box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+}
+.header{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  .logo{
+    padding: 1rem;
+    svg{
+      height: 4rem;
+      width: fit-content;
+    }
+  }
+}

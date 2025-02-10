@@ -1,0 +1,54 @@
+@import "../styles/_variables";
+
+.draggable-element {
+    background-color: rgb(238, 238, 238);
+    border: .125rem solid #6e6e6e;
+    border-radius: $border-radius;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    cursor: move;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--dragging {
+      opacity: .8;
+      background-color: rgb(199, 199, 199);
+    }
+    button{
+      display: none;
+    }
+    &.hovered{
+      button{
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg{
+          height: 1rem;
+          cursor: pointer;
+          &:hover{
+            color: red;
+          }
+        }
+      }
+    }
+  }
+
+.canvas .draggable-element {
+  &:hover{
+    outline: .25rem solid green;
+    outline-offset: .25rem;
+  }
+}
+  
+// .element-border{
+//   border: 2px solid red;
+//   padding: 2px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   margin-bottom: 0.25rem;
+//   // visibility: hidden;
+// }
