@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd";
 import DraggableFormItem from "./formElements/DraggableFormItem";
 import "../styles/Canvas.scss";
 
-const Canvas = ({ formSchema, setFormSchema }) => {
+const Canvas = ({ formSchema, setFormSchema, selected, setSelected }) => {
 
   const [, drop] = useDrop({
     accept: "FORM_ELEMENT",
@@ -20,6 +20,11 @@ const Canvas = ({ formSchema, setFormSchema }) => {
 	useEffect(()=>{
 		localStorage.setItem('schema', JSON.stringify(formSchema));
 	}, [formSchema])
+
+	
+	useEffect(()=>{
+		console.log(selected);
+	}, [selected])
 
   const addElementToSchema = (item, monitor) => {
     console.log(item);
@@ -80,6 +85,8 @@ const Canvas = ({ formSchema, setFormSchema }) => {
           id={element.id}
           label={element.label}
           setFormSchema={setFormSchema}
+					selected={selected}
+					setSelected={setSelected}
         />
       ))}
     </div>

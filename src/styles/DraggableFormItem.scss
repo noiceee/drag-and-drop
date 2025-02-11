@@ -18,6 +18,10 @@
     button{
       display: none;
     }
+    &.selected{
+      outline: .25rem dashed green;
+      border: none;
+    }
     &.hovered{
       button{
         all: unset;

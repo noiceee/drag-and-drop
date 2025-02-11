@@ -10,7 +10,7 @@ const RuntimePage = () => {
             {schema.map((ele, index) => {
                 const Element = typeMap[ele.type];
                 console.log(ele.label);
-                return Element ? <Element key={index} label={ele.label} palceholder={ele.placeholder} mode="run" /> : null;
+                return Element ? <Element key={index} label={ele.label} placeholder={ele.placeholder} mode="run" /> : null;
             })}
         </div>
     )

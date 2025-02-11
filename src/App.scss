@@ -9,3 +9,11 @@ html, body {
   display: flex;
   align-items: center;
 }
+.mode-selector{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}

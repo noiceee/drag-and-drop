@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDrag } from "react-dnd";
 import "../../styles/DraggableFormItem.scss";
 
-const FormElementDraggable = ({ label, type, id, index, setFormSchema}) => {
+const FormElementDraggable = ({ label, type, id, index, setFormSchema, selected, setSelected}) => {
   const [hovered, setHovered] = useState(false);
+
   const [{ isDragging }, drag] = useDrag(() => {
     console.log(index);
     return {
@@ -26,9 +27,13 @@ const FormElementDraggable = ({ label, type, id, index, setFormSchema}) => {
       <div
         id={id}
         ref={drag}
-        className={`draggable-element ${isDragging ? "draggable-element--dragging" : ""} ${hovered ? "hovered" : ""}`}
+        className={`draggable-element ${isDragging ? "draggable-element--dragging" : ""} ${hovered ? "hovered" : ""} ${selected === id ? "selected" : ""}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onClick={()=>{
+          console.log(`Aya ${id}`);
+          setSelected(()=>id);
+        }}
         >
         {label}
         <button className="delete" onClick={handleDeleteClick}>

@@ -1,9 +1,8 @@
+import { IonToggle } from "@ionic/react";
 import React from "react";
 import { useDrag } from "react-dnd";
-import "./Checkbox.scss";
-import { IonButton, IonCheckbox } from "@ionic/react";
 
-const Checkbox = ({
+const Toggle = ({
   mode = "design",
   id = "default-id",
   label = "Default Label",
@@ -12,7 +11,7 @@ const Checkbox = ({
 }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "FORM_ELEMENT",
-    item: { type: "checkbox", label: "CheckBox" },
+    item: { type: "toggle", label: "Toggle" },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -20,17 +19,15 @@ const Checkbox = ({
 
   return (
     mode === "run" ? (
-    <div className="checkbox-run">
-      {/* <input type="checkbox" id={id}/>
-      <label for={id}>{label}</label> */}
-      <IonCheckbox id={id} labelPlacement="end">{label}</IonCheckbox>
+    <div className="toggle-run">
+      <IonToggle id={id}>{label}</IonToggle>
     </div>
     ) : ( 
     <div ref={drag} className={`draggable ${isDragging ? "dragging" : ""}`}>
-      Checkbox
+      Toggle
     </div>
     )
   );
 };
 
-export default Checkbox;
+export default Toggle;
