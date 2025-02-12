@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import "./styles/global.scss";
@@ -7,10 +7,23 @@ import RunTimePage from "./pages/RuntimePage";
 import '@ionic/react/css/core.css';
 import { IonRadio, IonRadioGroup, setupIonicReact } from '@ionic/react';
 import "./App.scss";
+import { translate, setLanguage, initLanguage } from "./i18n";
 
 setupIonicReact();
 const App = () => {
   const [mode, setMode] = useState("run");
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    initLanguage();
+    console.log(navigator.language.slice(0, 2));
+    setLang(navigator.language.slice(0, 2));
+  }, []);
+
+  const handleLanguageChange = (lang) => {
+    setLang(lang);
+    setLanguage(lang);
+  };
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -24,7 +37,7 @@ const App = () => {
               </g>
           </svg>
         </div>
-        <h1>Drag-and-Drop Form Builder</h1>
+        <h1>{translate("heading")}</h1>
       </div>
       <IonRadioGroup value={mode === "run" ? "run" : "design"} className="mode-selector"
        onIonChange={(event) => setMode(()=>event.detail.value)}>

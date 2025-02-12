@@ -1,0 +1,1 @@
+console.warn("Servic Worker from nav folder");
